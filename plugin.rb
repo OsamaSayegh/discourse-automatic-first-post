@@ -1,6 +1,6 @@
 # name: discourse-automatic-first-post
 # about: A plugin to create an automatic post on every new topic
-# version: 0.1
+# version: 0.2
 # authors: Osama Sayegh
 # url: https://github.com/OsamaSayegh/discourse-automatic-first-post
 
@@ -13,7 +13,7 @@ after_initialize do
 
       post = PostCreator.create!(
         user,
-        raw: "test from me hello",
+        raw: I18n.t("automatic_first_post.post_content"),
         topic_id: topic.id,
         skip_bot: true,
         skip_validations: true
