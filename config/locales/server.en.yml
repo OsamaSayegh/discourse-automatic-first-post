@@ -1,0 +1,5 @@
+en:
+  site_settings:
+    automatic_first_post_plugin_enabled: "Create an automatic post on every new topic (except PMs)."
+    automatic_first_post_owner: "Choose the user who will create the automatic post."
+    automatic_first_post_delete_after_mins: "Automatic posts will be deleted after x minutes."

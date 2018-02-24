@@ -1,0 +1,4 @@
+plugins:
+  automatic_first_post_plugin_enabled: false
+  automatic_first_post_owner: ''
+  automatic_first_post_delete_after_mins: 5
