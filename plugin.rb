@@ -7,13 +7,20 @@
 after_initialize do
   load File.expand_path('../jobs/delete_automatic_first_post.rb', __FILE__)
 
-  DiscourseEvent.on(:topic_created) do |topic, _, _user|
+  DiscourseEvent.on(:topic_created) do |topic, _, op_user|
     if SiteSetting.automatic_first_post_plugin_enabled && topic.archetype == Archetype.default
       user = User.find_by(username: SiteSetting.automatic_first_post_owner.gsub(/@/, "")) || Discourse.system_user 
 
+      translation_hash = {
+        username: user.username,
+        name: user.name,
+        op_username: op_user.username,
+        op_name: op_user.name
+      }
+
       post = PostCreator.create!(
         user,
-        raw: I18n.t("automatic_first_post.post_content", username: user.username, name: user.name),
+        raw: I18n.t("automatic_first_post.post_content", translation_hash),
         topic_id: topic.id,
         skip_bot: true,
         skip_validations: true
