@@ -13,7 +13,7 @@ after_initialize do
 
       post = PostCreator.create!(
         user,
-        raw: I18n.t("automatic_first_post.post_content"),
+        raw: I18n.t("automatic_first_post.post_content", username: user.username, name: user.name),
         topic_id: topic.id,
         skip_bot: true,
         skip_validations: true
