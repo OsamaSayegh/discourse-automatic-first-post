@@ -15,7 +15,8 @@ after_initialize do
         username: user.username,
         name: user.name,
         op_username: op_user.username,
-        op_name: op_user.name
+        op_name: op_user.name,
+        deleted_in: SiteSetting.automatic_first_post_delete_after_mins
       }
 
       post = PostCreator.create!(
